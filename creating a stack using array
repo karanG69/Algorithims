@@ -1,0 +1,63 @@
+#include <iostream>
+
+using namespace std;
+class stack{
+    public:
+    int size;
+    int *arr;
+    int top;
+    
+    stack(int s){
+        size=s;
+        arr=new int[size];
+        top=-1;
+    }
+    void push(int d){
+        if(size-top > 1){
+            top++;
+            arr[top]=d;
+        }
+        else{
+            cout<<"Stack overflow"<<endl;
+        }
+    }
+    void pop(){
+        if(top>-1){
+            top--;
+        }
+        else{
+            cout<<"Stack is Empty"<<endl;
+        }
+    }
+    void peek(){
+        if(top>-1){
+            cout<<"top element is "<<arr[top]<<endl;
+        }
+        else{
+            cout<<"Stack is Empty"<<endl;
+        }
+    }
+    bool empty(){
+        if(top>=0){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    
+};
+
+int main()
+{
+    int s,d;
+    cin>>s;
+    stack s1(s);
+    s1.push(5);
+    s1.push(4);
+    s1.peek();
+    s1.push(6);
+    cout<<s1.empty()<<endl;
+    
+    return 0;
+}
