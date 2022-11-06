@@ -1,0 +1,18 @@
+int Height(Node* root){
+    if(root==NULL){
+        return 0;
+    }
+    int left=Height(root->left);
+    int right=Height(root->right);
+    return max(left,right)+1;
+}
+int diametre(Node* root){
+    if(root==NULL){
+        return 0;
+    }
+    int opt1=diametre(root->left);
+    int opt2=diametre(root->right);
+    int opt3=Height(root->left)+Height(root->right)+1;
+    return max(opt1,opt2,opt3)+1;
+    //Time complexity-O(n)
+}
