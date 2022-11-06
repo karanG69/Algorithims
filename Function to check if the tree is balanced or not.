@@ -1,0 +1,19 @@
+int Height(Node* root){
+    if(root==NULL){
+        return 0;
+    }
+    int left=Height(root->left);
+    int right=Height(root->right);
+    return max(left,right)+1;
+}
+boot IsBalanced(Node* root){
+    if(root==NULL){
+        return 1;
+    }
+    bool Left=IsBalanced(root->left);
+    bool Right=IsBalanced(root->right);
+    bool Diff=Height(root->left)-Height(root->left)<=1;
+    if (Left && Right && Diff){
+        return 1;
+    }
+}
