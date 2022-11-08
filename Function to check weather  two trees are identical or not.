@@ -1,0 +1,20 @@
+Node* IsIdentical(Node* R1,Node* R2){
+    if(R1==NULL && R2==NULL){
+        return true; 
+    }
+    if(R1!=NULL && R2==NULL){
+        return false;
+    }
+    if(R1==NULL && R2!=NULL){
+        return false;
+    }
+    bool Left=IsIdentical(R1->left,R2->left);
+    bool Right=IsIdentical(R1->right,R2->right);
+    bool value= R1->data==R2->data;
+    if(Left && Right && value){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
