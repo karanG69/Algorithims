@@ -21,8 +21,8 @@ int search(int Inorder[],int curr,int start,int end){
     }
     return -1;
 }
-Node* BuildTree(int PostOrder[],int Inorder[],int start,int end){
-    static int Indx=4;
+Node* BuildTree(int PostOrder[],int Inorder[],int start,int end,int n){
+    static int Indx=n-1;
     if(start>end){
         return NULL;
     } 
@@ -33,8 +33,8 @@ Node* BuildTree(int PostOrder[],int Inorder[],int start,int end){
         return node;
     }
     int pos=search(Inorder,curr,start,end);
-    node->right=BuildTree(PostOrder,Inorder,pos+1,end);
-    node->left=BuildTree(PostOrder,Inorder,start,pos-1);
+    node->right=BuildTree(PostOrder,Inorder,pos+1,end,n);
+    node->left=BuildTree(PostOrder,Inorder,start,pos-1,n);
     return node;
 }
 void printPre(Node* root){
@@ -63,9 +63,17 @@ void printIn(Node* root){
 }
 int main()
 {
-    int Postorder[]={4,2,5,3,1};
-    int Inorder[]={4,2,1,5,3};
-    Node* root=BuildTree(Postorder,Inorder,0,4);
+    int n;
+    cin>>n;
+    int Postorder[n];
+    for(int i=0;i<n;i++){
+        cout<<"Enter PostOreder-"<<endl;cin>>Postorder[i];
+    }
+    int Inorder[n];
+    for(int i=0;i<n;i++){
+        cout<<"Enter InOreder-"<<endl;cin>>Inorder[i];
+    }
+    Node* root=BuildTree(Postorder,Inorder,0,n-1,n);
     cout<<"Preorder :";printPre(root);cout<<endl;
 
     cout<<"Inorder :";printIn(root);cout<<endl;
