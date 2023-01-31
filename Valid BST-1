@@ -1,0 +1,10 @@
+boolean isBSTUtil(TreeNode root,int min,int max){
+        if (root==null){
+            return true;
+        }
+        if(root.val<=min || max<=root.val){
+            return false;
+        }
+        return isBSTUtil(root.left,min,root.val) &&
+        isBSTUtil(root.right,root.val,max);
+    }
