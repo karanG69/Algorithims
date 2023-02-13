@@ -12,7 +12,7 @@ boot IsBalanced(Node* root){
     }
     bool Left=IsBalanced(root->left);
     bool Right=IsBalanced(root->right);
-    bool Diff=Height(root->left)-Height(root->left)<=1;
+    bool Diff=Height(root->left)-Height(root->right)<=1;
     if (Left && Right && Diff){
         return 1;
     }
